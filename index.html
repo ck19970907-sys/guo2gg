@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安心貸 | 台灣小額借貸專家・債務整合・信用貸款</title>
+  <meta name="description" content="安心貸提供台灣最專業的小額信用貸款與債務整合服務，快速審核、利率透明、安全可靠。立即加入LINE諮詢，輕鬆解決資金需求。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2044;
+      --blue:    #1a3a6b;
+      --accent:  #2563eb;
+      --gold:    #f59e0b;
+      --gold2:   #fbbf24;
+      --white:   #ffffff;
+      --gray:    #94a3b8;
+      --light:   #f1f5f9;
+      --text:    #1e293b;
+      --line:    #06c755;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,22,40,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 24px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 22px; font-weight: 900; letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--gold2), var(--white));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-cta {
+      background: var(--line);
+      color: #fff; font-weight: 700; font-size: 14px;
+      padding: 10px 20px; border-radius: 50px;
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6,199,85,0.4); }
+    .nav-cta svg { width: 18px; height: 18px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 40%, #0d2a5e 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245,158,11,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.4);
+      color: var(--gold2); font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 50px; margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 8vw, 72px); font-weight: 900;
+      line-height: 1.1; margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(90deg, var(--gold2) 0%, #fb923c 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px); color: #94a3b8;
+      max-width: 560px; margin: 0 auto 40px; line-height: 1.7; font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--line);
+      color: #fff; font-weight: 800; font-size: 17px;
+      padding: 16px 36px; border-radius: 50px; text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(6,199,85,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(6,199,85,0.5); }
+    .btn-secondary {
+      background: transparent; border: 2px solid rgba(255,255,255,0.25);
+      color: #fff; font-weight: 600; font-size: 16px;
+      padding: 14px 32px; border-radius: 50px; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold2); background: rgba(245,158,11,0.08); }
+
+    .hero-stats {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+      margin-top: 64px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 36px; font-weight: 900; color: var(--gold2); line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--gray); margin-top: 6px; letter-spacing: 1px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold2);
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25);
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 600px; }
+
+    /* ─── PRODUCTS ─── */
+    .products { background: var(--navy2); }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 36px 32px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .product-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold2));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); border-color: rgba(37,99,235,0.4); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .product-card:hover::before { opacity: 1; }
+    .product-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(37,99,235,0.3);
+    }
+    .product-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .product-card p { font-size: 15px; color: #94a3b8; line-height: 1.7; margin-bottom: 20px; }
+    .product-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 50px;
+      background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);
+      color: #93c5fd;
+    }
+
+    /* ─── FEATURES ─── */
+    .features { background: var(--navy); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+    .feature-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 28px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .feature-item:hover { background: rgba(37,99,235,0.07); }
+    .feature-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .feature-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .feature-item p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how { background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%); }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0; margin-top: 56px; position: relative;
+    }
+    .step {
+      text-align: center; padding: 32px 24px; position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+      font-size: 24px; color: var(--accent); opacity: 0.5;
+    }
+    @media (max-width: 768px) {
+      .step:not(:last-child)::after { display: none; }
+    }
+    .step-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 900; margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+    }
+    .step h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* ─── SOCIAL PROOF ─── */
+    .proof { background: var(--navy2); }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+    .proof-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 28px;
+    }
+    .stars { color: var(--gold2); font-size: 18px; margin-bottom: 16px; }
+    .proof-card blockquote { font-size: 15px; line-height: 1.7; color: #cbd5e1; margin-bottom: 20px; }
+    .proof-author { display: flex; align-items: center; gap: 12px; }
+    .proof-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+    }
+    .proof-name { font-weight: 700; font-size: 14px; }
+    .proof-title { font-size: 12px; color: var(--gray); }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--navy); }
+    .faq-list { margin-top: 48px; max-width: 760px; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; color: #fff;
+      font-family: inherit; font-size: 16px; font-weight: 600;
+      text-align: left; padding: 22px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; gap: 16px;
+    }
+    .faq-q:hover { color: var(--gold2); }
+    .faq-chevron { font-size: 20px; flex-shrink: 0; transition: transform 0.3s; color: var(--gray); }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--gold2); }
+    .faq-a {
+      font-size: 15px; color: var(--gray); line-height: 1.8;
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section {
+      background: linear-gradient(135deg, #0f2044 0%, #1a3a6b 50%, #0a1628 100%);
+      text-align: center; padding: 100px 24px;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(37,99,235,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; color: var(--gray); margin-bottom: 40px; }
+    .cta-line-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--line); color: #fff;
+      font-size: 20px; font-weight: 800;
+      padding: 20px 48px; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 12px 40px rgba(6,199,85,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-line-btn:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(6,199,85,0.55); }
+    .cta-line-btn svg { width: 28px; height: 28px; }
+    .cta-note { margin-top: 20px; font-size: 13px; color: var(--gray); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060e1a;
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+    .footer-brand { font-size: 24px; font-weight: 900; letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--gold2), var(--white));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .footer-tagline { font-size: 14px; color: var(--gray); margin-bottom: 28px; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .footer-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold2); }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin-bottom: 20px; }
+    .footer-legal { font-size: 12px; color: #475569; line-height: 1.7; }
+
+    /* ─── FLOATING LINE BTN ─── */
+    .float-line {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      background: var(--line); color: #fff;
+      width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(6,199,85,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-line:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(6,199,85,0.65); }
+    .float-line svg { width: 30px; height: 30px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .hero-stats { gap: 24px; }
+      .stat-num { font-size: 28px; }
+      .step:not(:last-child)::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">安心貸</div>
+  <a href="https://line.me/ti/p/tDJe5U36Gg" target="_blank" rel="noopener" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    立即諮詢
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative;z-index:1;max-width:800px;margin:0 auto;">
+    <div class="hero-badge">🇹🇼 台灣在地金融服務</div>
+    <h1>
+      資金缺口？<br/>
+      <span class="highlight">安心貸</span>幫您解決
+    </h1>
+    <p class="hero-sub">
+      專業小額信用貸款 &amp; 債務整合服務<br/>
+      快速審核・利率透明・安全可靠・專人服務
+    </p>
+    <div class="hero-btns">
+      <a href="https://line.me/ti/p/tDJe5U36Gg" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px;"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 免費諮詢
+      </a>
+      <a href="#products" class="btn-secondary">了解服務方案</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">10,000+</div>
+        <div class="stat-label">服務客戶</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24H</div>
+        <div class="stat-label">快速審核</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">客戶滿意度</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">隱藏費用</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <span class="section-tag">主要服務</span>
+    <h2 class="section-title">為您量身打造的<br/>金融解決方案</h2>
+    <p class="section-sub">無論您需要資金周轉，或想整合多筆貸款降低利息，安心貸都有最適合您的方案。</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">💳</div>
+        <h3>小額信用貸款</h3>
+        <p>無需擔保品，憑個人信用即可申請。資金快速入帳，滿足您的緊急資金需求，彈性還款方式讓您輕鬆無負擔。</p>
+        <div class="product-tags">
+          <span class="tag">最快當日撥款</span>
+          <span class="tag">免擔保品</span>
+          <span class="tag">彈性還款</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon" style="background: linear-gradient(135deg, #d97706, #b45309);">🔄</div>
+        <h3>債務整合</h3>
+        <p>將多筆高利率貸款整合為單一低利率貸款，每月還款金額更少，利息支出大幅降低，幫助您早日脫離債務困境。</p>
+        <div class="product-tags">
+          <span class="tag" style="background:rgba(217,119,6,0.15);border-color:rgba(217,119,6,0.3);color:#fcd34d;">降低月付金</span>
+          <span class="tag" style="background:rgba(217,119,6,0.15);border-color:rgba(217,119,6,0.3);color:#fcd34d;">整合多筆貸款</span>
+          <span class="tag" style="background:rgba(217,119,6,0.15);border-color:rgba(217,119,6,0.3);color:#fcd34d;">減少利息支出</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <span class="section-tag">為什麼選擇我們</span>
+    <h2 class="section-title">安心貸的五大優勢</h2>
+    <p class="section-sub">我們以誠信、透明、專業為核心，為每一位客戶提供最優質的金融服務。</p>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div>
+          <h4>快速審核放款</h4>
+          <p>最快24小時完成審核，急需資金不必等待，讓您安心應對各種突發狀況。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <div>
+          <h4>利率透明無隱費</h4>
+          <p>所有費用清楚列明，絕無隱藏手續費，讓您借款前完全掌握還款計畫。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🛡️</div>
+        <div>
+          <h4>個資嚴格保護</h4>
+          <p>採用銀行級加密技術保護您的個人資料，資訊安全絕不妥協。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👨‍💼</div>
+        <div>
+          <h4>專人一對一服務</h4>
+          <p>專業顧問全程陪伴，從諮詢到撥款，每個步驟都有人為您解答疑問。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div>
+          <h4>LINE 即時溝通</h4>
+          <p>透過 LINE 輕鬆諮詢，隨時隨地都能與我們聯繫，不受時間地點限制。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🎯</div>
+        <div>
+          <h4>彈性方案客製化</h4>
+          <p>依照您的收入、需求量身規劃最合適的貸款方案，不做一刀切的標準答案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <span class="section-tag">申請流程</span>
+    <h2 class="section-title">4 步驟輕鬆完成申請</h2>
+    <p class="section-sub">簡單快速的申請流程，讓您不必跑銀行，在家就能完成所有手續。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>LINE 加入好友</h4>
+        <p>掃描 QR Code 或點擊連結，加入安心貸 LINE 官方帳號。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>告知需求</h4>
+        <p>與專業顧問說明您的借款金額、用途及還款能力。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>提交資料</h4>
+        <p>依顧問指示提供必要文件，流程簡便快速完成。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>審核撥款</h4>
+        <p>審核通過後最快當日撥款，資金直接入帳您的帳戶。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof" id="proof">
+  <div class="container">
+    <span class="section-tag">客戶見證</span>
+    <h2 class="section-title">他們都選擇了安心貸</h2>
+    <p class="section-sub">真實客戶的真實心聲，讓您放心選擇我們。</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>「之前有三筆卡債壓得喘不過氣，透過安心貸的債務整合，每月還款金額少了將近一半，終於看到還清的希望了！」</blockquote>
+        <div class="proof-author">
+          <div class="proof-avatar">陳</div>
+          <div>
+            <div class="proof-name">陳先生</div>
+            <div class="proof-title">台北市・上班族</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>「急需資金周轉，LINE 諮詢後隔天就撥款了，整個過程非常順暢，顧問也很有耐心解釋，完全沒有被刁難的感覺。」</blockquote>
+        <div class="proof-author">
+          <div class="proof-avatar">林</div>
+          <div>
+            <div class="proof-name">林小姐</div>
+            <div class="proof-title">新北市・自營業者</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>「之前跑了好幾家銀行都被拒絕，安心貸的顧問幫我找到適合的方案，整個申請過程透明，費用也講得很清楚，很放心。」</blockquote>
+        <div class="proof-author">
+          <div class="proof-avatar">王</div>
+          <div>
+            <div class="proof-name">王先生</div>
+            <div class="proof-title">桃園市・工廠員工</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="section-tag">常見問題</span>
+    <h2 class="section-title">您可能想了解的問題</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          申請小額信用貸款需要哪些條件？
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a">一般需要年滿20歲、有穩定收入來源，並提供身分證、收入證明（薪資單或存摺）等基本文件。具體條件依個人狀況而異，歡迎透過 LINE 與我們的顧問直接諮詢，我們會為您評估最合適的方案。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          債務整合可以整合哪些類型的債務？
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a">信用卡卡債、現金卡、各類個人信用貸款、消費性貸款等均可納入整合。透過整合，您只需每月繳納一筆款項，大幅降低還款壓力與利息支出。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          申請到撥款需要多久時間？
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a">資料齊全的情況下，審核最快可在24小時內完成，部分案件可當日撥款。實際時間依個人狀況及資料完整度而定，我們會全力協助加快流程。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          信用不好或曾有逾期紀錄可以申請嗎？
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a">每個人的狀況不同，我們不會因為信用分數稍低就直接拒絕。我們的顧問會依您的實際情況進行評估，提供最適合您現況的解決方案，歡迎直接透過 LINE 告知您的狀況。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          諮詢是否完全免費？
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a">是的，LINE 諮詢完全免費，沒有任何費用。我們會在您決定申請前，清楚說明所有費用與條件，讓您完全了解後再做決定。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div style="position:relative;z-index:1;">
+    <span class="section-tag">立即行動</span>
+    <h2>解決資金困擾，從今天開始</h2>
+    <p>加入 LINE 免費諮詢，專業顧問為您量身規劃最佳方案</p>
+    <a href="https://line.me/ti/p/tDJe5U36Gg" target="_blank" rel="noopener" class="cta-line-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      加入 LINE 免費諮詢
+    </a>
+    <p class="cta-note">⚡ 24小時快速回覆 &nbsp;|&nbsp; 🔒 個資嚴格保密 &nbsp;|&nbsp; 💯 完全免費諮詢</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">安心貸</div>
+  <div class="footer-tagline">台灣小額借貸・債務整合專家</div>
+  <div class="footer-links">
+    <a href="#products">服務項目</a>
+    <a href="#features">為何選擇我們</a>
+    <a href="#how">申請流程</a>
+    <a href="#faq">常見問題</a>
+    <a href="https://line.me/ti/p/tDJe5U36Gg" target="_blank" rel="noopener">LINE 諮詢</a>
+  </div>
+  <hr class="footer-divider" />
+  <div class="footer-legal">
+    © 2026 安心貸 版權所有｜本公司提供貸款媒合諮詢服務<br/>
+    借款前請詳閱相關條款，貸款有風險，借貸請謹慎評估自身還款能力<br/>
+    年利率依個人信用狀況而定，實際核貸金額與利率以審核結果為準
+  </div>
+</footer>
+
+<!-- FLOATING LINE BUTTON -->
+<a href="https://line.me/ti/p/tDJe5U36Gg" target="_blank" rel="noopener" class="float-line" title="LINE 諮詢">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+</a>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
